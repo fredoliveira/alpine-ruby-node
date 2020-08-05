@@ -64,6 +64,17 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 
 ```
 
+### Security considerations
+
+Because of the nature of Docker and how it works, the security of your resulting containers hinges on the security of all the layers that are used to build it. As such, your security depends on the security of _this_ particular image, and the security of this image depends on Alpine, which it builds on top of. In building `alpine-ruby-node`, I have made sure to only add to Alpine, the bare minimum set of packages a regular Ruby developer would use, and no more.
+
+While addressing the full spectrum of things that go into hardening Docker and containers in general is out of scope for this particular README, I would recommend following at least a core set of best practices while using this (or any) docker image:
+
+- Whitelist and use only the images you need
+- Run a vulnerability scan on your final images, perhaps as part of your build process
+  - AWS's ECR includes free scanning of pushed images
+- Try to run the latest possible base image that works for you
+
 ### Credits and contributing
 
 This work follows on the footsteps of `andrius/alpine-ruby` and `mhart/alpine` for inspiration. Credit goes to them some of the original code for the Dockerfile that generates this image.
