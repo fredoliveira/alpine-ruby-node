@@ -4,38 +4,27 @@ This is a small, alpine-based docker image with the latest ruby, the latest LTS 
 
 ### Installed versions
 
-```bash
-❯ docker run -ti --rm fredoliveira/alpine-ruby-node:latest cat /etc/issue
-Welcome to Alpine Linux 3.11
-
-~/code/docker/alpine-ruby-node master*
-❯ docker run -ti --rm fredoliveira/alpine-ruby-node:latest ruby -v
-ruby 2.6.6p146 (2020-03-31 revision 67876) [x86_64-linux-musl]
-
-~/code/docker/alpine-ruby-node master*
-❯ docker run -ti --rm fredoliveira/alpine-ruby-node:latest node -v
-v12.15.0
-
-~/code/docker/alpine-ruby-node master*
-❯ docker run -ti --rm fredoliveira/alpine-ruby-node:latest yarn -v
-1.19.2
-```
+| Image tag | Alpine | Ruby      | Node     | Yarn   |
+| --------- | ------ | --------- | -------- | ------ |
+| 3.11.6    | 3.11.6 | 2.6.6p146 | v12.15.0 | 1.19.2 |
+| 3.12.0    | 3.12.0 | 2.7.1p83  | v12.18.3 | 1.22.4 |
 
 ### Size comparison
 
 ```
-fredoliveira/alpine-ruby-node       latest              d24abaa50c94        43 minutes ago      61.2MB
+fredoliveira/alpine-ruby-node       3.12.0              d24abaa50c94        43 minutes ago      63.9MB
+fredoliveira/alpine-ruby-node       3.11.6              d24abaa50c94        43 minutes ago      61.2MB
 fredoliveira/debian-ruby-node       latest              4bfee5c32d36        About an hour ago   951MB
 ```
 
-This Alpine image only takes under 10% of a similar image with the same dependencies using Debian. Ideally, that keeps you final containers smaller.
+This Alpine image only takes under 10% of a similar image with the same dependencies using Debian. Ideally, that helps keep you final containers smaller.
 
 ### Example Dockerfile
 
 Here is an example `Dockerfile` using this docker image, from our own Union codebase:
 
 ```
-FROM fredoliveira/ruby-alpine-node:latest
+FROM fredoliveira/ruby-alpine-node:3.11.6
 
 # Install extra dependencies for Union
 RUN apk update \
