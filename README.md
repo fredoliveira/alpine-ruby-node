@@ -6,8 +6,8 @@ This is a small, alpine-based docker image with the latest ruby, the latest LTS 
 
 | Image tag | Alpine | Ruby      | Node     | Yarn   |
 | --------- | ------ | --------- | -------- | ------ |
-| 3.11.6    | 3.11.6 | 2.6.6p146 | v12.15.0 | 1.19.2 |
 | 3.12.0    | 3.12.0 | 2.7.1p83  | v12.18.3 | 1.22.4 |
+| 3.11.6    | 3.11.6 | 2.6.6p146 | v12.15.0 | 1.19.2 |
 
 ### Size comparison
 
@@ -18,6 +18,17 @@ fredoliveira/debian-ruby-node       latest              4bfee5c32d36        Abou
 ```
 
 This Alpine image only takes under 10% of a similar image with the same dependencies using Debian. Ideally, that helps keep you final containers smaller.
+
+### Security considerations
+
+Because of the nature of Docker and how it works, the security of your resulting containers hinges on the security of all the layers that are used to build it. As such, your security depends on the security of _this_ particular image, and the security of this image depends on Alpine, which it builds on top of. In building `alpine-ruby-node`, I have made sure to only add to Alpine, the bare minimum set of packages a regular Ruby developer would use, and no more.
+
+While addressing the full spectrum of things that go into hardening Docker and containers in general is out of scope for this particular document, I would recommend following at least a core set of best practices while using this (or any) docker image:
+
+- Whitelist and use only the images you need
+- Run a vulnerability scan on your final images, perhaps as part of your build process
+  - AWS's [ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html) includes [free scanning of pushed images](https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html)
+- Try to run the latest possible base image that works for you
 
 ### Example Dockerfile
 
@@ -63,17 +74,6 @@ EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
 
 ```
-
-### Security considerations
-
-Because of the nature of Docker and how it works, the security of your resulting containers hinges on the security of all the layers that are used to build it. As such, your security depends on the security of _this_ particular image, and the security of this image depends on Alpine, which it builds on top of. In building `alpine-ruby-node`, I have made sure to only add to Alpine, the bare minimum set of packages a regular Ruby developer would use, and no more.
-
-While addressing the full spectrum of things that go into hardening Docker and containers in general is out of scope for this particular README, I would recommend following at least a core set of best practices while using this (or any) docker image:
-
-- Whitelist and use only the images you need
-- Run a vulnerability scan on your final images, perhaps as part of your build process
-  - AWS's ECR includes free scanning of pushed images
-- Try to run the latest possible base image that works for you
 
 ### Credits and contributing
 
