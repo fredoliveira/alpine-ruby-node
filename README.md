@@ -6,12 +6,14 @@ This is a small, alpine-based docker image with the latest ruby, the latest LTS 
 
 | Image tag | Alpine | Ruby      | Node     | Yarn   |
 | --------- | ------ | --------- | -------- | ------ |
+| 3.12.3    | 3.12.0 | 2.7.1p83  | v12.18.4 | 1.22.4 |
 | 3.12.0    | 3.12.0 | 2.7.1p83  | v12.18.3 | 1.22.4 |
 | 3.11.6    | 3.11.6 | 2.6.6p146 | v12.15.0 | 1.19.2 |
 
 ### Size comparison
 
 ```
+fredoliveira/alpine-ruby-node       3.12.3              7c1c1f3ac05a        About a minute ago  63.1MB
 fredoliveira/alpine-ruby-node       3.12.0              d24abaa50c94        43 minutes ago      63.9MB
 fredoliveira/alpine-ruby-node       3.11.6              d24abaa50c94        43 minutes ago      61.2MB
 fredoliveira/debian-ruby-node       latest              4bfee5c32d36        About an hour ago   951MB
@@ -35,7 +37,7 @@ While addressing the full spectrum of things that go into hardening Docker and c
 Here is an example `Dockerfile` using this docker image, from our own Union codebase:
 
 ```
-FROM fredoliveira/ruby-alpine-node:3.11.6
+FROM fredoliveira/ruby-alpine-node:3.12.3
 
 # Install extra dependencies for Union
 RUN apk update \
