@@ -6,20 +6,35 @@ This is a small, alpine-based docker image with the latest ruby, the latest LTS 
 
 | Image tag | Alpine | Ruby      | Node     | Yarn   |
 | --------- | ------ | --------- | -------- | ------ |
-| 3.12.3    | 3.12.0 | 2.7.1p83  | v12.18.4 | 1.22.4 |
+| 3.12.7    | 3.12.7 | 2.7.3p183 | v12.22.1 | 1.22.4 |
+| 3.12.3    | 3.12.3 | 2.7.1p83  | v12.18.4 | 1.22.4 |
 | 3.12.0    | 3.12.0 | 2.7.1p83  | v12.18.3 | 1.22.4 |
 | 3.11.6    | 3.11.6 | 2.6.6p146 | v12.15.0 | 1.19.2 |
 
 ### Size comparison
 
 ```
-fredoliveira/alpine-ruby-node       3.12.3              7c1c1f3ac05a        About a minute ago  63.1MB
-fredoliveira/alpine-ruby-node       3.12.0              d24abaa50c94        43 minutes ago      63.9MB
-fredoliveira/alpine-ruby-node       3.11.6              d24abaa50c94        43 minutes ago      61.2MB
-fredoliveira/debian-ruby-node       latest              4bfee5c32d36        About an hour ago   951MB
+fredoliveira/alpine-ruby-node       3.12.7         63.9MB
+fredoliveira/alpine-ruby-node       3.12.3         63.1MB
+fredoliveira/alpine-ruby-node       3.12.0         63.9MB
+fredoliveira/alpine-ruby-node       3.11.6         61.2MB
+fredoliveira/debian-ruby-node       latest         951MB
 ```
 
 This Alpine image only takes under 10% of a similar image with the same dependencies using Debian. Ideally, that helps keep you final containers smaller.
+
+### Snyk scan results
+
+```
+Testing fredoliveira/alpine-ruby-node:3.12.7...
+
+Package manager:   apk
+Project name:      docker-image|fredoliveira/alpine-ruby-node
+Docker image:      fredoliveira/alpine-ruby-node:3.12.7
+Platform:          linux/arm64
+
+✓ Tested 40 dependencies for known vulnerabilities, no vulnerable paths found.
+```
 
 ### Security considerations
 

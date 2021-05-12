@@ -4,12 +4,10 @@ install: --no-rdoc --no-ri
 update:  --no-rdoc --no-ri
 
 :benchmark: false
-
 :verbose: true
-
 :backtrace: true
-
 :update_sources: true
+
 sources:
   - http://gems.rubyforge.org/
   - http://rubygems.org/
