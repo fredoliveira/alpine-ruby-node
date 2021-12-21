@@ -4,12 +4,13 @@ This is a small, alpine-based docker image with the latest ruby, the latest LTS 
 
 ### Installed versions
 
-| Image tag | Alpine | Ruby      | Node     | Yarn   |
-| --------- | ------ | --------- | -------- | ------ |
-| 3.12.7    | 3.12.7 | 2.7.3p183 | v12.22.1 | 1.22.4 |
-| 3.12.3    | 3.12.3 | 2.7.1p83  | v12.18.4 | 1.22.4 |
-| 3.12.0    | 3.12.0 | 2.7.1p83  | v12.18.3 | 1.22.4 |
-| 3.11.6    | 3.11.6 | 2.6.6p146 | v12.15.0 | 1.19.2 |
+| Image tag | Alpine | Ruby      | Node     | Yarn    |
+| --------- | ------ | --------- | -------- | ------- |
+| 3.15.0    | 3.15.0 | 3.0.3p157 | v16.13.1 | 1.22.17 |
+| 3.12.7    | 3.12.7 | 2.7.3p183 | v12.22.1 | 1.22.4  |
+| 3.12.3    | 3.12.3 | 2.7.1p83  | v12.18.4 | 1.22.4  |
+| 3.12.0    | 3.12.0 | 2.7.1p83  | v12.18.3 | 1.22.4  |
+| 3.11.6    | 3.11.6 | 2.6.6p146 | v12.15.0 | 1.19.2  |
 
 ### Size comparison
 
@@ -26,14 +27,17 @@ This Alpine image only takes under 10% of a similar image with the same dependen
 ### Snyk scan results
 
 ```
-Testing fredoliveira/alpine-ruby-node:3.12.7...
+Testing fredoliveira/alpine-ruby-node:3.15.0...
 
+Organization:      fredoliveira
 Package manager:   apk
 Project name:      docker-image|fredoliveira/alpine-ruby-node
-Docker image:      fredoliveira/alpine-ruby-node:3.12.7
-Platform:          linux/arm64
+Docker image:      fredoliveira/alpine-ruby-node:3.15.0
+Platform:          linux/amd64
+Base image:        alpine:3.15.0
+Licenses:          enabled
 
-✓ Tested 40 dependencies for known vulnerabilities, no vulnerable paths found.
+✔ Tested 37 dependencies for known issues, no vulnerable paths found.
 ```
 
 ### Security considerations
@@ -90,6 +94,14 @@ COPY . .
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
 
+```
+
+### Building instructions
+
+To build these images locally:
+
+```bash
+docker buildx build --platform linux/amd64,linux/arm64 -t fredoliveira/alpine-ruby-node:latest -t fredoliveira/alpine-ruby-node:3.15.0 --push .
 ```
 
 ### Credits and contributing
