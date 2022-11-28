@@ -6,6 +6,7 @@ This is a small, alpine-based docker image with the latest ruby, the latest LTS 
 
 | Image tag | Alpine | Ruby      | Node     | Yarn    |
 | --------- | ------ | --------- | -------- | ------- |
+| 3.17.0    | 3.17.0 | 3.1.2-r1  | v18.12.1 | 1.22.19 |
 | 3.15.0    | 3.15.0 | 3.0.3p157 | v16.13.1 | 1.22.17 |
 | 3.12.7    | 3.12.7 | 2.7.3p183 | v12.22.1 | 1.22.4  |
 | 3.12.3    | 3.12.3 | 2.7.1p83  | v12.18.4 | 1.22.4  |
@@ -101,7 +102,7 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 To build these images locally:
 
 ```bash
-docker buildx build --platform linux/amd64,linux/arm64 -t fredoliveira/alpine-ruby-node:latest -t fredoliveira/alpine-ruby-node:3.15.0 --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t fredoliveira/alpine-ruby-node:latest -t fredoliveira/alpine-ruby-node:3.17.0 --push .
 ```
 
 ### Credits and contributing
