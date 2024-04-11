@@ -56,7 +56,7 @@ While addressing the full spectrum of things that go into hardening Docker and c
 
 Here is an example `Dockerfile` using this docker image, from our own Union codebase:
 
-```
+```Dockerfile
 FROM fredoliveira/ruby-alpine-node:3.12.3
 
 # Install extra dependencies for Union
@@ -94,12 +94,19 @@ COPY . .
 
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
-
 ```
 
 ### Building instructions
 
 To build these images locally:
+
+Set up a new Docker builder for multiple platform support:
+
+```bash
+docker buildx create --name mybuilder --bootstrap --use
+```
+
+Build and push a new version:
 
 ```bash
 docker buildx build --platform linux/amd64,linux/arm64 -t fredoliveira/alpine-ruby-node:latest -t fredoliveira/alpine-ruby-node:3.17.0 --push .
